@@ -125,7 +125,3 @@ def disease_predict():
 # @app.route('/default')
 # def default():
 #         return render_template('includes/default.html')
- 
-
-if __name__ == '__main__':
-    app.run(debug=True)
