@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+      body, html {
+          height: 100%;
+      }
+      .bg { 
+          /* The image used */
+          background-image: url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+
+          /* Full height */
+          height: 110%; 
+
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+
+      .head {
+        color: white;
+        font-family: sans-serif;
+        font-size: 30px;
+        border-bottom: double;
+        text-align: center;
+      }
+
+      .nav.navbar-nav {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+      }
+      @media (min-width: 768px) {
+          .navbar-nav {
+              float: none;
+          }
+      }
+
+      .tablink {
+          background-color: #FEA127;
+          color: white;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 14px 16px;
+          font-size: 17px;
+          width: 25%;
+      }
+
+      .tablink:hover {
+          background-color: green;
+      }
+
+      /* Style the tab content */
+      .tabcontent {
+          color: white;
+          display: none;
+          padding: 50px;
+          width: 855px;
+          height: fit-content;
+          margin: auto;
+      }
+      #Symptom, #Doctor, #Drug {
+          background-color: #78A9FD;
+          width: 600px;
+          margin: auto;
+          margin-top: 45px;
+          padding: 20px;
+          margin-bottom: 20px;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    {% block body%}
+    <div class="bg"> 
+      <br>
+      <div>
+        <center><img src="https://lh3.googleusercontent.com/XGu4L46rhIGXaY60ejWMFXkyctL0J4BymlqWBUqKnPlbh9CiTyqIIBI1QBQ4HLO35LozJV2wmp8=w328-h299-no" 
+          style="height:70px; width: 70px;">
+        <span class="head">Symptom-Based Disease Prediction and Home Care Recommendation System</span></center>
+      </div>
+      <br>
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-center">
+              <li class=""><a href="/">HOME</a></li>
+              <!-- <li class=""><a href="#">ABOUT US</a></li> -->
+            </ul>
+          </div>
+        </nav>
+      <div id="Symptom" class="tabcontent" style="display:block;">
+        <form name="SymptomForm" id="SymForm" method="POST" action="/disease_predict">
+          <div class="head">
+            Symptom Checker
+          </div>
+          <div class="form-group">
+            <label for="Symptom1" align="left">Symptom1</label>
+            <input type="text" list="symp" multiple="multiple" class="form-control" name="Symptom1">
+            <datalist id="symp">
+                {% for symp in symptoms %}
+                <option value="{{symp}}">{{symp}}</option>
+                {% endfor %}
+            </datalist>
+    
+            <label for="Symptom2" align="left">Symptom2</label>
+            <input type="text" list="symp" multiple="multiple" class="form-control" name="Symptom2">
+            <datalist id="symp">
+                {% for symp in symptoms %}
+                <option value="{{symp}}">{{symp}}</option>
+                {% endfor %}
+            </datalist>
+    
+            <label for="Symptom3" align="left">Symptom3</label>
+            <input type="text" list="symp" multiple="multiple" class="form-control" name="Symptom3">
+            <datalist id="symp">
+                {% for symp in symptoms %}
+                <option value="{{symp}}">{{symp}}</option>
+                {% endfor %}
+            </datalist>
+    
+            <label for="Symptom4" align="left">Symptom4</label>
+            <input type="text" list="symp" multiple="multiple" class="form-control" name="Symptom4">
+            <datalist id="symp">
+                {% for symp in symptoms %}
+                <option value="{{symp}}">{{symp}}</option>
+                {% endfor %}
+            </datalist>
+    
+            <label for="Symptom5" align="left">Symptom5</label>
+            <input type="text" list="symp" multiple="multiple" class="form-control" name="Symptom5">
+            <datalist id="symp">
+                {% for symp in symptoms %}
+                <option value="{{symp}}">{{symp}}</option>
+                {% endfor %}
+            </datalist>
+            <button type="submit" class="btn btn-primary" style="padding: 10px;" name="form">Check</button>
+
+          </div>
+          
+        </form>
+      </div>
+    
+      <div id="Doctor" class="tabcontent">
+        <div class="head">
+          Find My Doctor
+        </div>
+        <form name="Doctor_search" id="DoctorForm" method="POST" action="/find_doctor">
+          <input type="text" class="form-control" name="doctor"><br>
+          <button type="submit" class="btn btn-primary" style="padding: 10px;" name="search_doctor">Search</button>
+        </form>
+      </div>
+    
+    </div>
+    </div>
+    
+    <script>
+      function openTab(tabName, elmnt, color) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablink");
+          for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].style.backgroundColor = "";
+          }
+          document.getElementById(tabName).style.display = "block";
+          elmnt.style.backgroundColor = color;
+      }
+    
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+    </script>
+    
+    {% endblock %}
+  </body>
+</html>
+

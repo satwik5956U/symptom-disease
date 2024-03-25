@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps Example</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVZIr_BmEFJTyl7MzSpBS_XpLrBgZEBZg&libraries=places&sensor=false"></script>
+    <script src="js/script.js"></script>
+    <script type="text/javascript">
+        var geocoder;
+        var map;
+        var markers = Array();
+        var infos = Array();
+
+        function initialize() {
+            // prepare Geocoder
+            geocoder = new google.maps.Geocoder();
+            // set initial position (Byculla)
+            var myLatlng = new google.maps.LatLng(14.4426, 78.9865);
+            var myOptions = {
+                zoom: 15,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+            findAddress();
+        }
+
+        // rest of your JavaScript functions here...
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+<body>
+    <div id="gmap_canvas" style="position: absolute; top:200px; right:20px; height:400px; width:800px;"></div>
+    <input type="hidden" id="lat" name="lat" value="18.9682846" />
+    <input type="hidden" id="lng" name="lng" value="72.8311396" />
+</body>
+</html>
