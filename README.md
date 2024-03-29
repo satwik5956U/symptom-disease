@@ -16,3 +16,6 @@ This Flask application predicts diseases based on given health symptoms and sugg
    ```bash
    python app.py
 This will launch the application, allowing users to input symptoms and receive predictions for possible diseases along with suggested home remedies.
+## Deployment
+
+The application is deployed at [sympton-disease](https://symptom-disease-1.onrender.com/).
